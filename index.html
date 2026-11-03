@@ -10,6 +10,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add("js")</script>
+<script src="site.js" defer></script>
 
 </head>
 <body>
@@ -62,11 +64,31 @@
       <h2 id="approach-title">The plan is designed around you, not the other way round.</h2>
       <p class="lede">There is no universal workout, fixed program or single definition of success here. One consistent philosophy guides the work, and your experience shapes everything else.</p>
     </div>
-    <div class="truths">
-      <div><h3>You arrive with your own history</h3><p>Your physical abilities, experiences, relationships, culture and beliefs about yourself all shape how you feel today. We start by understanding them.</p></div>
-      <div><h3>Mind and body affect each other</h3><p>Moving your body can change mood, focus and how you see yourself. Your thoughts and feelings shape motivation, consistency and how you move.</p></div>
-      <div><h3>You are a full collaborator</h3><p>You decide what matters and what success looks like. I bring structure, tools and accountability to help you get there.</p></div>
-      <div><h3>The body is part of the work</h3><p>Movement and body awareness are chosen on purpose, to support a goal we've agreed on. They are never an add-on or a requirement.</p></div>
+    <div class="flips">
+      <div class="flip"><button class="flip-toggle" type="button" aria-pressed="false" aria-label="Turn over: You arrive with your own history"></button>
+        <span class="flip-inner">
+          <span class="face front"><span class="num">01</span><h3>You arrive with your own history</h3><span class="hint">Tap to read</span></span>
+          <span class="face back"><p>Your physical abilities, experiences, relationships, culture and beliefs about yourself all shape how you feel today. We start by understanding them.</p></span>
+        </span>
+      </div>
+      <div class="flip"><button class="flip-toggle" type="button" aria-pressed="false" aria-label="Turn over: Mind and body affect each other"></button>
+        <span class="flip-inner">
+          <span class="face front"><span class="num">02</span><h3>Mind and body affect each other</h3><span class="hint">Tap to read</span></span>
+          <span class="face back"><p>Moving your body can change mood, focus and how you see yourself. Your thoughts and feelings shape motivation, consistency and how you move.</p></span>
+        </span>
+      </div>
+      <div class="flip"><button class="flip-toggle" type="button" aria-pressed="false" aria-label="Turn over: You are a full collaborator"></button>
+        <span class="flip-inner">
+          <span class="face front"><span class="num">03</span><h3>You are a full collaborator</h3><span class="hint">Tap to read</span></span>
+          <span class="face back"><p>You decide what matters and what success looks like. I bring structure, tools and accountability to help you get there.</p></span>
+        </span>
+      </div>
+      <div class="flip"><button class="flip-toggle" type="button" aria-pressed="false" aria-label="Turn over: The body is part of the work"></button>
+        <span class="flip-inner">
+          <span class="face front"><span class="num">04</span><h3>The body is part of the work</h3><span class="hint">Tap to read</span></span>
+          <span class="face back"><p>Movement and body awareness are chosen on purpose, to support a goal we've agreed on. They are never an add-on or a requirement.</p></span>
+        </span>
+      </div>
     </div>
   </section>
 
@@ -99,13 +121,16 @@
       <span class="eyebrow">How it works</span>
       <h2 id="process-title">From first questions to everyday life</h2>
     </div>
-    <ol class="steps">
-      <li><span class="n" aria-hidden="true">1</span><div><h3>Whole-person assessment</h3><p>A short online questionnaire about your well-being, how you move, what matters to you and what you'd like to change. There are no right answers, and you can skip anything optional and talk it through in person instead.</p><p class="meta">About 12–15 minutes, online</p></div></li>
-      <li><span class="n" aria-hidden="true">2</span><div><h3>Planning together</h3><p>In our first session we agree on goals: something about your mindset, something physical, and something that connects the two. For example, being less self-critical, getting more active, and feeling confident when facing physical challenges.</p></div></li>
-      <li><span class="n" aria-hidden="true">3</span><div><h3>Sessions that include the body</h3><p>Coaching sessions bring in body awareness and movement where they help: noticing what your body does under stress, practising steadier responses, and trying activity you choose.</p></div></li>
-      <li><span class="n" aria-hidden="true">4</span><div><h3>Reflect and adapt</h3><p>We regularly look at what you're noticing, physically and emotionally, including anything unexpected. Progress might mean more challenge, less intensity, a new focus, or a completely different activity.</p></div></li>
-      <li><span class="n" aria-hidden="true">5</span><div><h3>Into everyday life</h3><p>The goal is to carry what you learn into relationships, work and hard moments. Success means needing coaching less over time, not more.</p></div></li>
-    </ol>
+    <div class="stepper" data-tabs data-autoplay="7000">
+      <div role="tablist" aria-label="How it works"><button role="tab" id="step-tab-0" aria-controls="step-0" aria-selected="true" tabindex="0" type="button"><span class="num">01</span>Whole-person assessment</button><button role="tab" id="step-tab-1" aria-controls="step-1" aria-selected="false" tabindex="-1" type="button"><span class="num">02</span>Planning together</button><button role="tab" id="step-tab-2" aria-controls="step-2" aria-selected="false" tabindex="-1" type="button"><span class="num">03</span>Sessions that include the body</button><button role="tab" id="step-tab-3" aria-controls="step-3" aria-selected="false" tabindex="-1" type="button"><span class="num">04</span>Reflect and adapt</button><button role="tab" id="step-tab-4" aria-controls="step-4" aria-selected="false" tabindex="-1" type="button"><span class="num">05</span>Into everyday life</button></div>
+      <div class="panels">
+        <div role="tabpanel" id="step-0" aria-labelledby="step-tab-0"><span class="counter">01 / 05</span><h3>Whole-person assessment</h3><p>A short online questionnaire about your well-being, how you move, what matters to you and what you'd like to change. There are no right answers, and you can skip anything optional and talk it through in person instead.</p><p class="meta">About 12–15 minutes, online</p></div>
+        <div role="tabpanel" id="step-1" aria-labelledby="step-tab-1" hidden><span class="counter">02 / 05</span><h3>Planning together</h3><p>In our first session we agree on goals: something about your mindset, something physical, and something that connects the two. For example, being less self-critical, getting more active, and feeling confident when facing physical challenges.</p></div>
+        <div role="tabpanel" id="step-2" aria-labelledby="step-tab-2" hidden><span class="counter">03 / 05</span><h3>Sessions that include the body</h3><p>Coaching sessions bring in body awareness and movement where they help: noticing what your body does under stress, practising steadier responses, and trying activity you choose.</p></div>
+        <div role="tabpanel" id="step-3" aria-labelledby="step-tab-3" hidden><span class="counter">04 / 05</span><h3>Reflect and adapt</h3><p>We regularly look at what you're noticing, physically and emotionally, including anything unexpected. Progress might mean more challenge, less intensity, a new focus, or a completely different activity.</p></div>
+        <div role="tabpanel" id="step-4" aria-labelledby="step-tab-4" hidden><span class="counter">05 / 05</span><h3>Into everyday life</h3><p>The goal is to carry what you learn into relationships, work and hard moments. Success means needing coaching less over time, not more.</p></div>
+      </div>
+    </div>
   </section>
 
   <section class="wrap section" aria-labelledby="paths-title" style="padding-top:0">
@@ -113,19 +138,25 @@
       <span class="eyebrow">One philosophy, different paths</span>
       <h2 id="paths-title">What individualized coaching can look like</h2>
     </div>
-    <div class="paths">
-      <article class="path">
-        <span class="concern">Stress and avoidance</span>
-        <dl><div><dt>Coaching focus</dt><dd>Spotting avoidance patterns and building small, steady steps toward what you've been putting off</dd></div><div><dt>Body</dt><dd>Getting comfortable with a faster heartbeat and breath, through activity you choose</dd></div><div><dt>Shared aim</dt><dd>Confidence in responding to pressure and uncertainty</dd></div></dl>
-      </article>
-      <article class="path">
-        <span class="concern">Low energy and motivation</span>
-        <dl><div><dt>Coaching focus</dt><dd>Reconnecting with values and planning activities that give back energy</dd></div><div><dt>Body</dt><dd>Small, doable steps such as regular walks</dd></div><div><dt>Shared aim</dt><dd>Rebuilding energy, agency and engagement in daily life</dd></div></dl>
-      </article>
-      <article class="path">
-        <span class="concern">Self-criticism and perfectionism</span>
-        <dl><div><dt>Coaching focus</dt><dd>Rewriting the story you tell about yourself and testing harsh assumptions</dd></div><div><dt>Body</dt><dd>Noticing how you talk to yourself during physical challenges</dd></div><div><dt>Shared aim</dt><dd>A more flexible relationship with performance and your body</dd></div></dl>
-      </article>
+    <div class="flips three">
+      <div class="flip"><button class="flip-toggle" type="button" aria-pressed="false" aria-label="Turn over: Stress and avoidance"></button>
+        <span class="flip-inner">
+          <span class="face front"><span class="num">Example 1</span><h3>Stress and avoidance</h3><span class="hint">Tap to see the plan</span></span>
+          <span class="face back"><dl><div><dt>Coaching focus</dt><dd>Spotting avoidance patterns and building small, steady steps toward what you've been putting off</dd></div><div><dt>Body</dt><dd>Getting comfortable with a faster heartbeat and breath, through activity you choose</dd></div><div><dt>Shared aim</dt><dd>Confidence in responding to pressure and uncertainty</dd></div></dl></span>
+        </span>
+      </div>
+      <div class="flip"><button class="flip-toggle" type="button" aria-pressed="false" aria-label="Turn over: Low energy and motivation"></button>
+        <span class="flip-inner">
+          <span class="face front"><span class="num">Example 2</span><h3>Low energy and motivation</h3><span class="hint">Tap to see the plan</span></span>
+          <span class="face back"><dl><div><dt>Coaching focus</dt><dd>Reconnecting with values and planning activities that give back energy</dd></div><div><dt>Body</dt><dd>Small, doable steps such as regular walks</dd></div><div><dt>Shared aim</dt><dd>Rebuilding energy, agency and engagement in daily life</dd></div></dl></span>
+        </span>
+      </div>
+      <div class="flip"><button class="flip-toggle" type="button" aria-pressed="false" aria-label="Turn over: Self-criticism and perfectionism"></button>
+        <span class="flip-inner">
+          <span class="face front"><span class="num">Example 3</span><h3>Self-criticism and perfectionism</h3><span class="hint">Tap to see the plan</span></span>
+          <span class="face back"><dl><div><dt>Coaching focus</dt><dd>Rewriting the story you tell about yourself and testing harsh assumptions</dd></div><div><dt>Body</dt><dd>Noticing how you talk to yourself during physical challenges</dd></div><div><dt>Shared aim</dt><dd>A more flexible relationship with performance and your body</dd></div></dl></span>
+        </span>
+      </div>
     </div>
     <p class="paths-note">These are illustrations, not real clients. Movement doesn't always have to be a challenge, either. Sometimes what helps most is movement that is enjoyable, restorative or simply good for you.</p>
   </section>
