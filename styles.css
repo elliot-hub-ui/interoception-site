@@ -18,6 +18,7 @@
   color-scheme:dark;
 }
 *{box-sizing:border-box}
+[hidden]{display:none !important}
 html{scroll-behavior:smooth}
 body{background:var(--ground); color:var(--ink); font-family:var(--f-body); font-size:17px; line-height:1.6}
 .wrap{max-width:1120px; margin:0 auto; padding-left:max(20px, env(safe-area-inset-left, 0px)); padding-right:max(20px, env(safe-area-inset-right, 0px))}

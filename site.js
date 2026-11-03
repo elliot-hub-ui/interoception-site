@@ -66,7 +66,10 @@
 
     const go = (n) => {
       n = Math.max(0, Math.min(slides.length - 1, n));
-      track.scrollTo({ left: slides[n].offsetLeft, behavior: reduceMotion ? "auto" : "smooth" });
+      const left = slides[n].offsetLeft;
+      track.scrollTo({ left, behavior: reduceMotion ? "auto" : "smooth" });
+      // Fallback: if smooth scrolling didn't finish (some browsers in the background skip it), jump there.
+      setTimeout(() => { if (Math.abs(track.scrollLeft - left) > 4) { track.style.scrollBehavior = "auto"; track.scrollLeft = left; track.style.scrollBehavior = ""; update(); } }, 700);
     };
     function update() {
       const step = slides.length > 1 ? slides[1].offsetLeft - slides[0].offsetLeft : 1;
