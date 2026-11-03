@@ -4,6 +4,10 @@
   document.documentElement.classList.add("js");
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  // Hero spiral: draw it in only when someone can see it; otherwise it simply shows complete.
+  const mark = document.querySelector(".hero-mark");
+  if (mark && !reduceMotion && document.visibilityState === "visible") mark.classList.add("animate");
+
   // Steppers: tabs that auto-advance while on screen, pause on hover or focus, and stop once someone picks a step.
   document.querySelectorAll("[data-tabs]").forEach((root) => {
     const tabs = [...root.querySelectorAll('[role="tab"]')];
