@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Daily check-in · Interoception</title>
+<meta name="description" content="Your daily Interoception check-in: mood, connection to self and energy.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#17393B">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Check-in">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ground:#F3EFE6;--paper:#FBF9F4;--ink:#17393B;--ink-soft:#46605F;--line:#DDD6C7;--coral:#EF6A4C;--coral-ink:#B4462E;--band:#17393B;--band-ink:#F3EFE6;--band-soft:#B9C9C6;--tint:#E6ECEA;
+--f-display:"Outfit","Avenir Next","Segoe UI",system-ui,sans-serif;--f-body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root{--ground:#0F2324;--paper:#163032;--ink:#EDE8DD;--ink-soft:#AFC0BD;--line:#2A4446;--coral:#F07A5E;--coral-ink:#F49A83;--band:#1B3A3C;--tint:#1F3B3D;color-scheme:dark}}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--ground);color:var(--ink);font:17px/1.55 var(--f-body);-webkit-text-size-adjust:100%}
+.top{background:var(--band);color:var(--band-ink);padding:calc(14px + env(safe-area-inset-top,0px)) 20px 18px;border-bottom:4px solid var(--coral)}
+.top .row{max-width:520px;margin:0 auto;display:flex;align-items:center;gap:10px}
+.top svg{width:30px;height:30px;flex:none}
+.top b{font:600 18px/1 var(--f-display)}
+main{max-width:520px;margin:0 auto;padding:22px 20px calc(30px + env(safe-area-inset-bottom,0px))}
+h1{font:600 28px/1.15 var(--f-display);margin:4px 0 6px}
+.lead{color:var(--ink-soft);margin:0 0 18px}
+.when{display:flex;gap:8px;margin:0 0 18px}
+.when button{flex:1;padding:10px 12px;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--ink);font:700 15px var(--f-body);cursor:pointer}
+.when button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:16px 18px 10px;margin:0 0 14px}
+.card .head{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.card label{font:600 19px/1.2 var(--f-display)}
+.card .val{font:600 30px/1 var(--f-display);color:var(--coral-ink);min-width:2ch;text-align:right}
+.card .val.unset{font:700 13px var(--f-body);color:var(--ink-soft)}
+.card .hint{color:var(--ink-soft);font-size:14px;margin:2px 0 4px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:44px;background:transparent;margin:6px 0 0;touch-action:pan-y}
+input[type=range]::-webkit-slider-runnable-track{height:10px;border-radius:5px;background:linear-gradient(to right,var(--coral) var(--fill,0%),var(--tint) var(--fill,0%))}
+input[type=range]::-moz-range-track{height:10px;border-radius:5px;background:var(--tint)}
+input[type=range]::-moz-range-progress{height:10px;border-radius:5px;background:var(--coral)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:32px;height:32px;border-radius:50%;background:var(--paper);border:3px solid var(--coral);margin-top:-11px;box-shadow:0 2px 6px rgba(23,57,59,.2)}
+input[type=range]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:var(--paper);border:3px solid var(--coral)}
+input[type=range].unset::-webkit-slider-thumb{border-color:var(--line)}
+input[type=range]:focus-visible{outline:3px solid var(--coral);outline-offset:4px;border-radius:8px}
+.ends{display:flex;justify-content:space-between;font-size:13px;color:var(--ink-soft);margin-top:-2px}
+.note label{font:600 19px/1.2 var(--f-display)}
+.note .opt{font:400 14px var(--f-body);color:var(--ink-soft)}
+textarea{width:100%;min-height:92px;margin:8px 0 6px;border:1px solid var(--line);border-radius:12px;padding:12px;font:16px/1.45 var(--f-body);background:var(--ground);color:var(--ink);resize:vertical}
+textarea:focus{outline:3px solid var(--coral);outline-offset:1px}
+.send{width:100%;padding:16px;border:0;border-radius:999px;background:var(--coral-ink);color:#fff;font:700 18px var(--f-body);cursor:pointer;margin-top:6px}
+.send:disabled{opacity:.45;cursor:not-allowed}
+.small{font-size:13px;color:var(--ink-soft);text-align:center;margin:12px 0 0}
+.thanks{text-align:center;padding-top:26px}
+.thanks .ring{width:72px;height:72px;border-radius:50%;background:var(--coral);margin:0 auto 14px;display:grid;place-items:center}
+.thanks .ring svg{width:34px;height:34px}
+.nums{display:flex;gap:10px;justify-content:center;margin:18px 0}
+.nums div{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:10px 14px;min-width:94px}
+.nums b{display:block;font:600 26px/1.1 var(--f-display)}
+.nums span{font-size:13px;color:var(--ink-soft)}
+.again{background:transparent;border:1px solid var(--ink-soft);color:var(--ink);padding:12px 20px;border-radius:999px;font:700 15px var(--f-body);cursor:pointer}
+.alert{background:#F9E3DA;color:#8A3B1F;border-radius:12px;padding:12px 14px;margin:0 0 14px;font-size:15px}
+@media (prefers-color-scheme:dark){.alert{background:#3D2620;color:#F7B9A6}}
+.crisis{font-size:13px;color:var(--ink-soft);margin-top:20px}
+</style>
+</head>
+<body>
+<header class="top"><div class="row">
+<svg viewBox="0 0 120 120" aria-hidden="true"><g fill="none" stroke="#F3EFE6" stroke-width="5" stroke-linejoin="round"><path d="M62.00 24.76L77.88 52.28Q79.88 55.74 76.46 57.72L73.03 59.70A17.25 17.25 0 0 0 46.97 59.70L43.54 57.72Q40.12 55.74 42.12 52.28L58.00 24.76Q60.00 21.30 62.00 24.76Z"/><path d="M99.04 95.85L67.27 95.85Q63.27 95.85 63.27 91.89L63.27 87.94A17.25 17.25 0 0 0 76.30 65.37L79.73 63.39Q83.16 61.41 85.16 64.87L101.04 92.39Q103.04 95.85 99.04 95.85Z"/><path d="M18.96 92.39L34.84 64.87Q36.84 61.41 40.27 63.39L43.70 65.37A17.25 17.25 0 0 0 56.73 87.94L56.73 91.89Q56.73 95.85 52.73 95.85L20.96 95.85Q16.96 95.85 18.96 92.39Z"/></g><circle cx="60" cy="71" r="12" fill="#EF6A4C"/></svg>
+<b>Interoception</b></div></header>
+
+<main>
+<section id="form-view">
+  <p class="alert" id="no-code" hidden>This page needs the personal link your coach sent you. Please open that link (you can then add it to your home screen).</p>
+  <h1 id="greeting">Hello</h1>
+  <p class="lead">A one-minute check-in. Notice how you are right now, then slide to a number.</p>
+  <div class="when" role="group" aria-label="Time of day">
+    <button type="button" data-when="Morning" aria-pressed="false">Morning</button>
+    <button type="button" data-when="Evening" aria-pressed="false">Evening</button>
+  </div>
+  <form id="checkin" novalidate>
+    <div class="card"><div class="head"><label for="mood">Mood</label><span class="val unset" id="mood-v" aria-live="polite">Slide to choose</span></div>
+      <p class="hint">How are you feeling overall?</p>
+      <input type="range" id="mood" min="0" max="10" step="1" value="5" class="unset" aria-describedby="mood-v">
+      <div class="ends"><span>0 · very low</span><span>10 · very good</span></div></div>
+    <div class="card"><div class="head"><label for="connection">Connection to self</label><span class="val unset" id="connection-v" aria-live="polite">Slide to choose</span></div>
+      <p class="hint">How in touch do you feel with your body and what you need?</p>
+      <input type="range" id="connection" min="0" max="10" step="1" value="5" class="unset" aria-describedby="connection-v">
+      <div class="ends"><span>0 · disconnected</span><span>10 · very in touch</span></div></div>
+    <div class="card"><div class="head"><label for="energy">Energy</label><span class="val unset" id="energy-v" aria-live="polite">Slide to choose</span></div>
+      <p class="hint">How much energy do you have right now?</p>
+      <input type="range" id="energy" min="0" max="10" step="1" value="5" class="unset" aria-describedby="energy-v">
+      <div class="ends"><span>0 · drained</span><span>10 · full of energy</span></div></div>
+    <div class="card note"><label for="note">A small note <span class="opt">(optional)</span></label>
+      <p class="hint">In a word or a sentence: what's behind today's numbers?</p>
+      <textarea id="note" maxlength="500" placeholder="For example: tight shoulders after work"></textarea></div>
+    <button class="send" id="send" type="submit" disabled>Send check-in</button>
+    <p class="small">Only your coach sees your check-ins. Keep the note brief; you can always skip it.</p>
+  </form>
+</section>
+
+<section id="thanks-view" class="thanks" hidden>
+  <div class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+  <h1>Thanks for checking in</h1>
+  <p class="lead">Noticing is the practice.</p>
+  <div class="nums" id="nums"></div>
+  <p id="queued" class="alert" hidden>You seem to be offline. Your check-in is saved on this phone and will send next time you open this page.</p>
+  <button class="again" id="done" type="button">Done</button>
+  <p class="crisis">This isn't monitored in real time. If you're in crisis, call or text 988 (US) or call 911.</p>
+</section>
+</main>
+
+<script>
+(function () {
+  var FORM_ID = "263145496067161";
+  var Q = { code: "q1_code", when: "q2_when", mood: "q3_mood", connection: "q4_connection", energy: "q5_energy", note: "q6_note", sent: "q7_sent" };
+  var SUBMIT = "https://submit.jotform.com/submit/" + FORM_ID + "/";
+  var EXAMPLES = ["tight shoulders after work", "felt calm after a walk", "slept badly, jaw tense", "good talk with a friend", "rushed morning, shallow breath", "proud I said no"];
+
+  function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+
+  // The private client code comes from the personal link (?c=…) and is remembered on this phone.
+  var params = new URLSearchParams(location.search);
+  var code = (params.get("c") || store("io_code") || "").trim().toUpperCase().replace(/[^A-Z0-9]/g, "").slice(0, 12);
+  if (params.get("c") && code) store("io_code", code);
+  var noCode = !code;
+  document.getElementById("no-code").hidden = !noCode;
+
+  var hour = new Date().getHours();
+  var when = hour < 14 ? "Morning" : "Evening";
+  document.getElementById("greeting").textContent = hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
+  var whenButtons = document.querySelectorAll(".when button");
+  function setWhen(w) { when = w; whenButtons.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.when === w)); }); }
+  whenButtons.forEach(function (b) { b.addEventListener("click", function () { setWhen(b.dataset.when); }); });
+  setWhen(when);
+
+  document.getElementById("note").placeholder = "For example: " + EXAMPLES[Math.floor(Math.random() * EXAMPLES.length)];
+
+  var keys = ["mood", "connection", "energy"], touched = {};
+  var send = document.getElementById("send");
+  function refresh() { send.disabled = noCode || keys.some(function (k) { return !touched[k]; }); }
+  keys.forEach(function (k) {
+    var input = document.getElementById(k), out = document.getElementById(k + "-v");
+    function show() {
+      touched[k] = true; input.classList.remove("unset"); out.classList.remove("unset");
+      out.textContent = input.value; input.style.setProperty("--fill", (input.value * 10) + "%"); refresh();
+    }
+    input.addEventListener("input", show); input.addEventListener("change", show);
+    input.addEventListener("pointerdown", function () { if (!touched[k]) show(); });
+  });
+
+  function payload() {
+    var fd = new FormData();
+    fd.append("formID", FORM_ID); fd.append("simple_spc", FORM_ID + "-" + FORM_ID);
+    fd.append(Q.code, code); fd.append(Q.when, when);
+    keys.forEach(function (k) { fd.append(Q[k], document.getElementById(k).value); });
+    fd.append(Q.note, document.getElementById("note").value.trim().slice(0, 500));
+    fd.append(Q.sent, "interoception.cc/checkin");
+    return fd;
+  }
+  function post(fd) { return fetch(SUBMIT, { method: "POST", body: fd, mode: "no-cors" }); }
+  function serialise(fd) { var o = {}; fd.forEach(function (v, k) { o[k] = v; }); return JSON.stringify(o); }
+  function rebuild(json) { var o = JSON.parse(json), fd = new FormData(); Object.keys(o).forEach(function (k) { fd.append(k, o[k]); }); return fd; }
+
+  // Anything saved while offline is sent the next time the page opens.
+  var queued = store("io_pending");
+  if (queued && navigator.onLine !== false) {
+    try { post(rebuild(queued)).then(function () { store("io_pending", ""); }); } catch (e) {}
+  }
+
+  document.getElementById("checkin").addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (send.disabled) return;
+    send.disabled = true; send.textContent = "Sending…";
+    var fd = payload();
+    document.getElementById("nums").innerHTML = keys.map(function (k) {
+      var label = { mood: "Mood", connection: "Connection", energy: "Energy" }[k];
+      return "<div><b>" + document.getElementById(k).value + "</b><span>" + label + "</span></div>";
+    }).join("");
+    function done(offline) {
+      document.getElementById("queued").hidden = !offline;
+      document.getElementById("form-view").hidden = true;
+      document.getElementById("thanks-view").hidden = false;
+      window.scrollTo(0, 0);
+    }
+    post(fd).then(function () { done(false); }).catch(function () { store("io_pending", serialise(fd)); done(true); });
+  });
+  document.getElementById("done").addEventListener("click", function () { location.reload(); });
+})();
+</script>
+</body>
+</html>
